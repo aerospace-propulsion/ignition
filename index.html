@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ignition — No-power igniters for green propellants</title>
+<meta name="description" content="Ignition develops resonance igniters that light green propellants with no electrical power, no spark and no ignition fluid.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,500;112,700;125,800&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#10142B; --deep:#0C1024; --panel:#182042; --line:#2A3360;
+  --frost:#E8ECF4; --steel:#97A3C2; --heat:#FF8A3D; --glow:#FFC46B; --cryo:#5EC8F2;
+  --measure:38rem;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--frost);font:400 1.0625rem/1.65 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--glow)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--glow);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:"Archivo",system-ui,sans-serif;font-stretch:112%;margin:0;line-height:1.08}
+h1{font-weight:800;font-stretch:125%;font-size:clamp(2.4rem,5.6vw,4.4rem);letter-spacing:-.01em}
+h2{font-weight:700;font-size:clamp(1.7rem,3.2vw,2.5rem);margin-bottom:1.25rem}
+h3{font-weight:700;font-size:1.2rem;margin-bottom:.4rem}
+p{margin:0 0 1rem;max-width:var(--measure)}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+
+/* header */
+header{position:absolute;inset:0 0 auto;z-index:2}
+header .wrap{display:flex;justify-content:space-between;align-items:center;height:4.5rem}
+.brand{font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-stretch:125%;font-size:1.25rem;color:var(--frost);text-decoration:none;display:flex;gap:.55rem;align-items:center}
+.brand svg{width:1.4rem;height:1.4rem}
+nav a{color:var(--steel);text-decoration:none;margin-left:1.6rem;font-size:.95rem}
+nav a:hover{color:var(--frost)}
+@media (max-width:720px){nav a:not(.cta-link){display:none}}
+
+/* hero */
+.hero{position:relative;padding:8.5rem 0 5rem;background:radial-gradient(60rem 30rem at 85% 40%,#1B2350 0%,transparent 70%),var(--deep);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:3rem;align-items:center}
+.hero p.lead{font-size:1.2rem;color:#C9D2E6;margin-top:1.5rem;max-width:30rem}
+.expand{display:block;margin-top:1.75rem;color:var(--steel);font-size:.95rem;max-width:30rem}
+.expand b{color:var(--frost);font-weight:500}
+.btns{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.2rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;font-weight:500;text-decoration:none;font-size:1rem}
+.btn.primary{background:var(--heat);color:#1A0E05}
+.btn.primary:hover{background:var(--glow)}
+.btn.ghost{color:var(--frost);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--steel)}
+@media (max-width:880px){.hero .wrap{grid-template-columns:1fr}.hero{padding-top:7rem}}
+
+/* tube diagram */
+.diagram{width:100%;height:auto}
+.diagram text{font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:13px;fill:var(--steel)}
+.shock{stroke:var(--cryo);stroke-width:2.2;fill:none;animation:shock 1.1s ease-in-out infinite}
+@keyframes shock{0%,100%{transform:translateX(0)}50%{transform:translateX(150px)}}
+.hot{animation:heat 6s ease-in infinite}
+@keyframes heat{0%{opacity:0}70%{opacity:1}100%{opacity:1}}
+.flame{animation:flame 6s ease-in infinite;transform-origin:420px 150px}
+@keyframes flame{0%,72%{opacity:0;transform:scale(.4)}82%{opacity:1;transform:scale(1)}100%{opacity:1;transform:scale(1.05)}}
+@media (prefers-reduced-motion:reduce){.shock,.hot,.flame{animation:none}.hot,.flame{opacity:1}}
+
+/* sections */
+section{padding:5.5rem 0;border-top:1px solid var(--line)}
+.intro{max-width:44rem}
+.intro p{color:#C9D2E6}
+
+.steps{list-style:none;padding:0;margin:2.5rem 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.steps li{padding:1.4rem 1.4rem 0 0;border-top:2px solid var(--line);position:relative}
+.steps li::before{counter-increment:s;content:counter(s);font-family:"Archivo",system-ui,sans-serif;font-weight:800;font-size:1rem;color:var(--heat);display:block;margin-bottom:.6rem}
+.steps li:last-child{border-top-color:var(--heat)}
+.steps p{color:var(--steel);font-size:.98rem}
+@media (max-width:880px){.steps{grid-template-columns:1fr 1fr;row-gap:1.5rem}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.compare dl{margin:0}
+.compare dt{font-family:"Archivo",system-ui,sans-serif;font-weight:700;font-size:1.05rem;margin-top:1.4rem}
+.compare dd{margin:.3rem 0 0;color:var(--steel);max-width:30rem}
+.compare .ours dt{color:var(--glow)}
+.compare h3{color:var(--steel);font-weight:500;font-size:1rem;font-stretch:100%}
+@media (max-width:720px){.compare{grid-template-columns:1fr;gap:1rem}}
+
+.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:2.5rem}
+.apps article{border-left:2px solid var(--cryo);padding-left:1.25rem}
+.apps p{color:var(--steel);font-size:.98rem}
+@media (max-width:880px){.apps{grid-template-columns:1fr}}
+
+.specs{width:100%;max-width:44rem;border-collapse:collapse;margin-top:1.5rem}
+.specs th,.specs td{text-align:left;padding:.85rem 0;border-bottom:1px solid var(--line);vertical-align:top}
+.specs th{font-weight:400;color:var(--steel);width:55%}
+.specs td{font-family:"Archivo",system-ui,sans-serif;font-weight:700;font-size:1.15rem}
+.note{color:var(--steel);font-size:.9rem;margin-top:1rem}
+
+.timeline{list-style:none;padding:0;margin:2rem 0 0;max-width:44rem}
+.timeline li{display:grid;grid-template-columns:1.4rem 1fr;gap:1rem;padding-bottom:1.5rem;position:relative}
+.timeline li::before{content:"";width:.8rem;height:.8rem;border-radius:50%;margin-top:.45rem;background:var(--heat)}
+.timeline li.now::before{background:transparent;border:2px solid var(--heat)}
+.timeline li.next::before{background:transparent;border:2px solid var(--line)}
+.timeline li:not(:last-child)::after{content:"";position:absolute;left:.37rem;top:1.4rem;bottom:0;width:2px;background:var(--line)}
+.timeline span{color:var(--steel);display:block;font-size:.95rem}
+
+.offer{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem}
+.offer p{color:var(--steel)}
+@media (max-width:720px){.offer{grid-template-columns:1fr;gap:1.5rem}}
+
+.contact{background:var(--panel)}
+.contact p{color:#C9D2E6}
+.contact address{font-style:normal;margin-top:1.5rem;color:var(--steel)}
+.contact address strong{color:var(--frost);font-weight:500}
+
+footer{padding:2rem 0;color:var(--steel);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Ignition home">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="9" width="16" height="6" rx="1" fill="none" stroke="#E8ECF4" stroke-width="2"/><circle cx="20" cy="12" r="2.6" fill="#FF8A3D"/></svg>
+      Ignition
+    </a>
+    <nav aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#applications">Applications</a>
+      <a href="#status">Status</a>
+      <a class="cta-link" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Ignition from gas flow alone.</h1>
+      <p class="lead">We build resonance igniters for rocket engines that run on green propellants. The propellant flow heats itself to ignition. No electrical power, no spark plug and no ignition fluid.</p>
+      <span class="expand"><b>Ignition</b> stands for Innovative Green-propellant No-power Ignition Technology.</span>
+      <div class="btns">
+        <a class="btn primary" href="#contact">Talk to our team</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+    </div>
+
+    <svg class="diagram" viewBox="30 80 470 160" role="img" aria-labelledby="dgm-title dgm-desc">
+      <title id="dgm-title">Resonance igniter schematic</title>
+      <desc id="dgm-desc">A gas jet from a nozzle enters a closed-end resonance tube. A shock wave moves back and forth in the tube and heats the gas at the closed end until the propellant mixture ignites.</desc>
+      <defs>
+        <linearGradient id="tubeHeat" x1="0" x2="1">
+          <stop offset="0" stop-color="#5EC8F2" stop-opacity="0"/>
+          <stop offset=".65" stop-color="#FF8A3D" stop-opacity=".25"/>
+          <stop offset="1" stop-color="#FFC46B" stop-opacity=".95"/>
+        </linearGradient>
+        <radialGradient id="flameG"><stop offset="0" stop-color="#FFF1C9"/><stop offset=".45" stop-color="#FFC46B"/><stop offset="1" stop-color="#FF8A3D" stop-opacity="0"/></radialGradient>
+        <clipPath id="tubeClip"><path d="M250 118 L440 132 L440 168 L250 182 Z"/></clipPath>
+      </defs>
+      <!-- nozzle -->
+      <path d="M40 100 L150 100 L190 135 L190 165 L150 200 L40 200" fill="none" stroke="#97A3C2" stroke-width="3"/>
+      <path d="M40 90 H150 M40 210 H150" stroke="#2A3360" stroke-width="2"/>
+      <!-- jet -->
+      <path d="M190 138 C215 132 232 128 250 124 M190 162 C215 168 232 172 250 176" stroke="#5EC8F2" stroke-width="1.6" fill="none" stroke-dasharray="4 5" opacity=".8"/>
+      <!-- tube (conical) -->
+      <path class="hot" d="M250 118 L440 132 L440 168 L250 182 Z" fill="url(#tubeHeat)"/>
+      <g clip-path="url(#tubeClip)"><path class="shock" d="M262 112 Q272 150 262 188"/></g>
+      <path d="M250 118 L440 132 L440 168 L250 182" fill="none" stroke="#E8ECF4" stroke-width="3"/>
+      <path d="M440 128 V172" stroke="#E8ECF4" stroke-width="6"/>
+      <!-- ignition kernel at closed end -->
+      <circle class="flame" cx="420" cy="150" r="34" fill="url(#flameG)"/>
+      <!-- labels -->
+      <text x="40" y="232">Nozzle</text>
+      <text x="196" y="112">Propellant jet</text>
+      <text x="270" y="214">Resonance tube</text>
+      <text x="330" y="104">Closed end heats up</text>
+      <path d="M420 108 L424 124" stroke="#97A3C2" stroke-width="1"/>
+    </svg>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <div class="intro">
+      <h2>How a resonance igniter works</h2>
+      <p>The igniter uses an effect first studied by Hartmann and Sprenger. A gas jet blown into a tube with one closed end makes a shock wave travel back and forth inside the tube. Each pass compresses the gas at the closed end, and that gas gets hotter with every cycle until the mixture lights.</p>
+    </div>
+    <ol class="steps">
+      <li><h3>Inject</h3><p>Fuel and oxidizer are injected upstream of the nozzle and enter the tube already mixed.</p></li>
+      <li><h3>Resonate</h3><p>The underexpanded jet drives a strong pressure oscillation inside the resonance tube.</p></li>
+      <li><h3>Heat</h3><p>Repeated compression raises the gas temperature at the closed end of the tube.</p></li>
+      <li><h3>Ignite</h3><p>The hot gas lights the mixture, and the flame then lights the main combustion chamber.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <h2>Why it matters for green propulsion</h2>
+    <p>Green propellants such as methane/oxygen and ethane/nitrous oxide do not light on contact. Engines that use them need a separate ignition system, and today's options each add a burden.</p>
+    <div class="compare">
+      <div>
+        <h3>Current ignition methods</h3>
+        <dl>
+        <dt>Ignition fluids (TEA–TEB)</dt>
+        <dd>Toxic and pyrophoric. The number of restarts is fixed by how much fluid is carried.</dd>
+        <dt>Spark and torch igniters</dt>
+        <dd>Need high-voltage power, and the electrodes wear over time.</dd>
+        </dl>
+      </div>
+      <div class="ours">
+        <h3>Resonance igniter</h3>
+        <dl>
+        <dt>No power supply</dt>
+        <dd>The propellant flow itself provides the energy for ignition.</dd>
+        <dt>No ignition fluid</dt>
+        <dd>Runs on the same propellants as the main engine.</dd>
+        <dt>No moving parts</dt>
+        <dd>The igniter itself has no mechanical drive, which suits many restarts.</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="applications">
+  <div class="wrap">
+    <h2>Where it fits</h2>
+    <div class="apps">
+      <article>
+        <h3>Reusable rocket engines</h3>
+        <p>An igniter for engines that must restart many times across flights, without carrying ignition fluid.</p>
+      </article>
+      <article>
+        <h3>Orbital transfer vehicles</h3>
+        <p>Long-duration missions with many burns. Ignition that depends only on propellant supply, not on stored fluid or power.</p>
+      </article>
+      <article>
+        <h3>Lunar landing engines</h3>
+        <p>Ignition for storable green propellants in descent and landing engines.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="specs">
+  <div class="wrap">
+    <h2>Performance targets</h2>
+    <table class="specs">
+      <tr><th scope="row">Ignition success rate</th><td>≥ 95 %</td></tr>
+      <tr><th scope="row">Ignition delay</th><td>&lt; 200 ms</td></tr>
+      <tr><th scope="row">Repeated ignitions</th><td>≥ 200</td></tr>
+      <tr><th scope="row">Technology readiness</th><td>TRL 6</td></tr>
+      <tr><th scope="row">Propellants</th><td>CH₄/O₂, C₂H₆/N₂O</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="status">
+  <div class="wrap">
+    <h2>Development status</h2>
+    <ol class="timeline">
+      <li><div><strong>Flow visualization</strong><span>Resonance behavior inside the tube observed and characterized.</span></div></li>
+      <li><div><strong>Ignition demonstrated</strong><span>Ignition by resonance heating shown in laboratory tests.</span></div></li>
+      <li class="now"><div><strong>Prototype component design</strong><span>In progress: designing the igniter as a flight-type component.</span></div></li>
+      <li class="next"><div><strong>Ignition qualification</strong><span>Repeated-ignition tests toward the performance targets above.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <h2>Working with us</h2>
+    <div class="offer">
+      <div>
+        <h3>Igniter components</h3>
+        <p>We develop and supply resonance igniters as engine components, matched to your propellant combination and chamber conditions.</p>
+      </div>
+      <div>
+        <h3>Custom design and test support</h3>
+        <p>We can design an igniter for a specific engine and support ignition testing with our lab facilities and simulation tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Ignition grew out of research at the Aerospace Propulsion Laboratory, Seoul National University. To discuss igniters for your engine, partnership or investment, write to us.</p>
+    <a class="btn primary" href="mailto:b.lee@snu.ac.kr">Email b.lee@snu.ac.kr</a>
+    <address>
+      <strong>Prof. Bok Jik Lee</strong>, Founder<br>
+      Department of Aerospace Engineering, Seoul National University<br>
+      1 Gwanak-ro, Gwanak-gu, Seoul, Korea
+    </address>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ignition</span>
+    <span>Research origin: <a href="https://space.snu.ac.kr">Aerospace Propulsion Laboratory, SNU</a></span>
+  </div>
+</footer>
+</body>
+</html>
